@@ -9,12 +9,14 @@ import {
 } from "react-router-dom";
 import ErrorPage from "../src/Pages/ErrorPage/ErrorPage";
 import Dashboard from "../src/Pages/Dashboard/Dashboard";
+import ShoppingCart from "../src/Pages/ShoppingCart/ShoppingCart";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>,
-      <Route path="*" element={<ErrorPage />} />
       <Route index element={<Dashboard />} />
+      <Route path="*" element={<ErrorPage />} />
+      <Route path="/Cart" element={<ShoppingCart />} />
     </Route>
   )
 );

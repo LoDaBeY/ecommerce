@@ -13,6 +13,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
+import { Link } from "react-router-dom";
 
 const options = ["English", "اللغة العربية"];
 
@@ -56,7 +57,7 @@ const Header1 = ({ setMode }) => {
             bgcolor: "red",
             p: "4px 10px",
             borderRadius: "14px",
-            fontWeight: "bold",
+            fontWeight: "bolder",
           }}
           variant="body2"
           color={"#fff"}
@@ -157,9 +158,9 @@ const Header1 = ({ setMode }) => {
             color: "#fff",
           }}
         >
-          <FacebookRoundedIcon />
-          <TwitterIcon />
-          <InstagramIcon />
+          <Link style={{color : "inherit"}} to={""}><FacebookRoundedIcon /></Link>
+          <Link style={{color : "inherit"}} to={""}><InstagramIcon /></Link>
+          <Link style={{color : "inherit"}} to={""}><TwitterIcon /></Link>
         </Stack>
       </Stack>
     </Stack>
