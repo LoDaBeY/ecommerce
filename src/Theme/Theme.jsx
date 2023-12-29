@@ -19,6 +19,9 @@ export const getDesignTokens = (mode) => ({
           },
           TabsAndSearchColor: {
             main: "#f6f9fc"
+          },
+          backGround: {
+            main: "#f6f6f6"
           }
         }
       : {
@@ -35,6 +38,9 @@ export const getDesignTokens = (mode) => ({
           },
           TabsAndSearchColor: {
             main: "#252b32"
+          },
+          backGround: {
+            main: "#1D2021"
           }
         }),
   },

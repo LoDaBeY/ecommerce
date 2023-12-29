@@ -13,20 +13,22 @@ import {
   List,
   ListItem,
   ListItemButton,
+  useMediaQuery,
+  Stack,
 } from "@mui/material";
 import { useState } from "react";
 import AttractionsIcon from "@mui/icons-material/Attractions";
-import { Close, Drafts, ExpandMore, Inbox } from "@mui/icons-material";
+import { Close, ExpandMore } from "@mui/icons-material";
 import WidgetsIcon from "@mui/icons-material/Widgets";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import BikeScooterIcon from "@mui/icons-material/BikeScooter";
 import CableIcon from "@mui/icons-material/Cable";
 import LibraryBooksIcon from "@mui/icons-material/LibraryBooks";
 import GamesIcon from "@mui/icons-material/Games";
 import { Link } from "react-router-dom";
+import TitleOfThe3NavBar from "./TitleOfThe3NavBar/TitleOfThe3NavBar";
 const options = [
   { name: "Bikes", path: "/Bikes", icon: <BikeScooterIcon /> },
   { name: "Electronics", path: "Electronics", icon: <CableIcon /> },
@@ -83,6 +85,7 @@ function Header3() {
       }}
     >
       <div>
+        {/* The button of Catagories in the left side of the screen */}
         <Button
           id="basic-button"
           aria-controls={open ? "basic-menu" : undefined}
@@ -111,6 +114,7 @@ function Header3() {
           <Box sx={{ flexGrow: 1 }} />
           <ExpandMore />
         </Button>
+        {/* The Catagories it self in the button of catagaories */}
         <Menu
           id="basic-menu"
           anchorEl={anchorEl}
@@ -146,11 +150,16 @@ function Header3() {
         </Menu>
       </div>
 
-      <Box>
-        <IconButton aria-label="" onClick={toggleDrawer("right", true)}>
-          <WidgetsIcon />
-        </IconButton>
+      {/* The Icon of the Drawer with Small Screens */}
 
+      <Box>
+        {useMediaQuery("(max-width:961px)") && (
+          <IconButton aria-label="" onClick={toggleDrawer("right", true)}>
+            <WidgetsIcon />
+          </IconButton>
+        )}
+
+        {/* Drawer coming from the right side of the screen */}
         <Drawer
           anchor={"right"}
           open={state["right"]}
@@ -175,60 +184,6 @@ function Header3() {
               <Close />
             </IconButton>
 
-            {/* <Accordion elevation={1} sx={{ bgcolor: "initial" }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls="panel1a-content"
-                id="panel1a-header"
-              >
-                <Typography>Home</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "initial" }}>
-                  <nav aria-label="main mailbox folders">
-                    <List>
-                      <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <GamesIcon />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Link
-                              style={{
-                                textDecoration: "none",
-                                color: "inherit",
-                              }}
-                              to={"/Games"}
-                            >
-                              Games
-                            </Link>
-                          </ListItemText>
-                        </ListItemButton>
-                      </ListItem>
-                      <ListItem disablePadding>
-                        <ListItemButton>
-                          <ListItemIcon>
-                            <BikeScooterIcon />
-                          </ListItemIcon>
-                          <ListItemText>
-                            <Link
-                              style={{
-                                textDecoration: "none",
-                                color: "inherit",
-                              }}
-                              to={"/Games"}
-                            >
-                              Bikes
-                            </Link>
-                          </ListItemText>
-                        </ListItemButton>
-                      </ListItem>
-                    </List>
-                  </nav>
-                </Box>
-              </AccordionDetails>
-            </Accordion> */}
-
             {DrawerOptions.map((item) => (
               <Accordion
                 key={item.name}
@@ -243,11 +198,9 @@ function Header3() {
                   <Typography>{item.title}</Typography>
                 </AccordionSummary>
                 <>
-                  <Box
-                    sx={{ width: "100%", maxWidth: 360, }}
-                  >
+                  <Box sx={{ width: "100%", maxWidth: 360 }}>
                     <nav aria-label="main mailbox folders">
-                      <List sx={{p: 0}}>
+                      <List sx={{ p: 0 }}>
                         <ListItem disablePadding>
                           <ListItemButton>
                             <ListItemIcon>
@@ -274,6 +227,17 @@ function Header3() {
             ))}
           </Box>
         </Drawer>
+
+        {/* The Drawer but with the bigger screen as a 4th NavBar */}
+        {useMediaQuery("(min-width:960px)") && (
+          <Stack direction={"row"} alignItems={"center"} gap={5}>
+            <TitleOfThe3NavBar Title={"Home"} />
+            <TitleOfThe3NavBar Title={"Mega Menu"} />
+            <TitleOfThe3NavBar Title={"Pages"} />
+            <TitleOfThe3NavBar Title={"User Account"} />
+            <TitleOfThe3NavBar Title={"Vendor Accoount"} />
+          </Stack>
+        )}
       </Box>
     </Container>
   );

@@ -107,7 +107,7 @@ function Header2() {
   }, [selectedIndex]);
 
   return (
-    <Container sx={{ my: 3 }}>
+    <Container sx={{py: 3}}>
       <Stack
         direction={"row"}
         sx={{ alignItems: "center", justifyContent: "space-between" }}
