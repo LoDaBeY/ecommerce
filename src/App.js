@@ -1,10 +1,10 @@
 import { Box, CssBaseline, ThemeProvider, createTheme } from "@mui/material";
-import Header1 from "../src/Pages/Header/Header1/Header1";
+import Header1 from "../src/Components/Header/Header1/Header1.jsx";
 import { Outlet } from "react-router-dom";
 import { useMemo, useState } from "react";
 import { getDesignTokens } from "./Theme/Theme";
-import Header2 from "../src/Pages/Header/Header2/Header2";
-import Header3 from "../src/Pages/Header/Header3/Header3.jsx";
+import Header2 from "../src/Components/Header/Header2/Header2.jsx";
+import Header3 from "../src/Components/Header/Header3/Header3.jsx";
 import  "./index.css";
 import ScrollUp from "../src/Components/ScrollFixedButton/ScrollUp";
 function App() {

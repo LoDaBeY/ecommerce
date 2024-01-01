@@ -1,5 +1,6 @@
 import {
   Badge,
+
   Container,
   IconButton,
   InputBase,
@@ -22,8 +23,9 @@ import { ExpandMore } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
-  flexGrow: 0.5,
+  flexGrow: 1,
   position: "relative",
+  margin: "12px",
   borderRadius: theme.shape.borderRadius,
   border: "1px solid #777",
   "&:hover": {
@@ -70,13 +72,11 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-
 function Header2() {
-  const Theme = useTheme()
+  const Theme = useTheme();
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const open = Boolean(anchorEl);
-
 
   const handleClickListItem = (event) => {
     setAnchorEl(event.currentTarget);
@@ -90,12 +90,12 @@ function Header2() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  
+
   const options = ["All Categories", "Car", "Clothes", "Electronic Devices"];
 
   // Load the selected index from localStorage on component mount
   useEffect(() => {
-    const storedIndex = localStorage.getItem('selectedTabIndex');
+    const storedIndex = localStorage.getItem("selectedTabIndex");
     if (storedIndex !== null) {
       setSelectedIndex(parseInt(storedIndex, 10)); // Convert the stored value to a number
     }
@@ -103,14 +103,18 @@ function Header2() {
 
   // Save the selected index to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('selectedTabIndex', selectedIndex.toString()); // Convert the value to a string
+    localStorage.setItem("selectedTabIndex", selectedIndex.toString()); // Convert the value to a string
   }, [selectedIndex]);
 
   return (
-    <Container sx={{py: 3}}>
+    <Container sx={{ py: 3 }}>
       <Stack
-        direction={"row"}
-        sx={{ alignItems: "center", justifyContent: "space-between" }}
+        sx={{
+          display: "flex",
+          flexDirection: { sm: "column", md: "row" },
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
       >
         <Stack sx={{ alignItems: "center" }}>
           <ShoppingCartIcon />
@@ -121,7 +125,13 @@ function Header2() {
         </Stack>
 
         {/* Search */}
-        <Search sx={{ borderRadius: "22px", display: "flex", justifyContent: "space-between"  }}>
+        <Search
+          sx={{
+            borderRadius: "22px",
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
@@ -134,7 +144,13 @@ function Header2() {
               component="nav"
               aria-label="Device settings"
               // @ts-ignore
-              sx={{ bgcolor: Theme.palette.TabsAndSearchColor.main, borderRadius: "22px", width: "auto", padding: 0}}
+              sx={{
+                // @ts-ignore
+                bgcolor: Theme.palette.TabsAndSearchColor.main,
+                borderRadius: "22px",
+                width: "auto",
+                padding: 0,
+              }}
             >
               <ListItem
                 id="lock-button"
@@ -143,12 +159,10 @@ function Header2() {
                 aria-label="when device is locked"
                 aria-expanded={open ? "true" : undefined}
                 onClick={handleClickListItem}
-                sx={{cursor: "pointer", width: 165, textAlign: "center"}}
+                sx={{ cursor: "pointer", width: 165, textAlign: "center" }}
               >
-                <ListItemText
-                  secondary={options[selectedIndex]}
-                />
-                <ExpandMore sx={{fontSize: "14px"}}/>
+                <ListItemText secondary={options[selectedIndex]} />
+                <ExpandMore sx={{ fontSize: "14px" }} />
               </ListItem>
             </List>
             <Menu
@@ -163,7 +177,7 @@ function Header2() {
             >
               {options.map((option, index) => (
                 <MenuItem
-                sx={{fontSize: "13px"}}
+                  sx={{ fontSize: "13px" }}
                   key={option}
                   selected={index === selectedIndex}
                   onClick={(event) => handleMenuItemClick(event, index)}
@@ -174,17 +188,31 @@ function Header2() {
             </Menu>
           </div>
         </Search>
+        <Stack
+          direction={"row"}
+          sx={{ alignItems: "center", width: { xs: "100%", md: 0 } }}
+        >
+          <Stack
+            sx={{
+              width: "100%",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <IconButton aria-label="cart" sx={{ color: "inherit" }}>
+              <StyledBadge badgeContent={4} color="primary">
+                <Link style={{ color: "inherit" }} to={"/Cart"}>
+                  {" "}
+                  <ShoppingBagIcon />
+                </Link>
+              </StyledBadge>
+            </IconButton>
 
-        <Stack direction={"row"} sx={{ alignItems: "center" }}>
-          <IconButton  aria-label="cart" sx={{ color: "inherit" }}>
-            <StyledBadge badgeContent={4} color="primary">
-            <Link style={{ color: "inherit" }} to={"/Cart"}>   <ShoppingBagIcon /></Link>
-            </StyledBadge>
-          </IconButton>
-
-          <IconButton sx={{ ml: 1, color: "inherit" }}>
-            <PersonIcon />
-          </IconButton>
+            <IconButton sx={{ ml: 1, color: "inherit" }}>
+              <PersonIcon />
+            </IconButton>
+          </Stack>
         </Stack>
       </Stack>
     </Container>

@@ -7,7 +7,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "../src/Pages/ErrorPage/ErrorPage";
+import ErrorPage from "../src/Components/ErrorPage/ErrorPage";
 import Dashboard from "../src/Pages/Dashboard/Dashboard";
 import ShoppingCart from "../src/Pages/ShoppingCart/ShoppingCart";
 

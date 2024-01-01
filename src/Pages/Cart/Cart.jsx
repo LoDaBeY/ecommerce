@@ -233,8 +233,8 @@ function Cart() {
               src="https://m.media-amazon.com/images/I/A1QP1cTDMHL._CLa%7C2140%2C2000%7C41w6c%2Bow-6L.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png"
               alt=""
               style={{
-                width: "350px",
-                height: "350px",
+                width: "250px",
+                height: "250px",
                 borderRadius: "10px",
                 // @ts-ignore
                 background: theme.palette.backGround.main,
@@ -265,8 +265,8 @@ function Cart() {
               {Images.map((item) => (
                 <img
                   style={{
-                    width: "100px",
-                    height: "100px",
+                    width: "70px",
+                    height: "70px",
                     margin: 5,
                     marginTop: 23,
                     borderRadius: "10px",
