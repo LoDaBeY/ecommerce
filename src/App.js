@@ -5,6 +5,8 @@ import { useMemo, useState } from "react";
 import { getDesignTokens } from "./Theme/Theme";
 import Header2 from "../src/Pages/Header/Header2/Header2";
 import Header3 from "../src/Pages/Header/Header3/Header3.jsx";
+import  "./index.css";
+import ScrollUp from "../src/Components/ScrollFixedButton/ScrollUp";
 function App() {
   const [mode, setMode] = useState(
     localStorage.getItem("currentTheme")
@@ -30,6 +32,7 @@ function App() {
         }}
       >
         <Outlet />
+        <ScrollUp/>
       </Box>
     </ThemeProvider>
   );

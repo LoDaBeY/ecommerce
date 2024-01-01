@@ -56,7 +56,6 @@ function HeroSection() {
             position: "relative",
             [theme.breakpoints.up("sm")]: {
               display: "none",
-              
             },
           }}
         >
@@ -73,8 +72,11 @@ function HeroSection() {
                 top: "40%",
                 left: "20px",
                 zIndex: 99,
-                p: 3,
-                color: theme.palette.mode === "dark"? "chocolate" : theme.palette.text.primary
+                p: 2,
+                color:
+                  theme.palette.mode === "dark"
+                    ? "chocolate"
+                    : theme.palette.text.primary,
               },
             }}
           >
@@ -87,7 +89,12 @@ function HeroSection() {
               </span>
             </Typography>
             <Typography variant="h6" color="inherit" fontWeight={"650"}>
-              SALE UP TO
+              SALE UP TO{" "}
+              <span
+                style={{ color: "red", fontSize: "25px", fontWeight: "bolder" }}
+              >
+                30%
+              </span>
             </Typography>
 
             <Typography variant="caption" color="inherit" fontWeight={"800"}>

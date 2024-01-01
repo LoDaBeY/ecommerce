@@ -26,7 +26,7 @@ const IconsSectionsBox = [
   {
     Icon: <LocalAtmIcon />,
     Name: "365 Days",
-    Description: "For Free Kargo and Return",
+    Description: "For Free Kargo",
   },
   { Icon: <PaymentIcon />, Name: "Payment", Description: "Start from $1" },
 ];
@@ -41,7 +41,9 @@ function IconsSeaction() {
         justifyContent: "space-around",
         flexWrap: "wrap",
         mt: 2,
-        bgcolor: theme.palette.mode === "dark" ? "#0006" : "#fff"
+        bgcolor: theme.palette.mode === "dark" ? "#0006" : "#fff",
+        p:0,
+        width: "90%"
       }}
     >
       {IconsSectionsBox.map((item) => (
@@ -51,16 +53,16 @@ function IconsSeaction() {
           sx={{
             display: "flex",
             alignItems: "center",
-            width: 280,
+            width: 250,
             gap: "5px",
             p: 1,
-            flexGrow: 1,
             justifyContent: "center",
             borderRight: {
               sm: "none",
               md: "1px solid #64748b",
               ":last-child": { borderRight: "none" },
             },
+            
           }}
           divider={<Divider orientation="vertical" flexItem />}
         >
